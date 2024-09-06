@@ -37,7 +37,7 @@ class Onboarding(db.Model):
     forms_complete = db.Column(db.Boolean, default=False)
     employee_id = db.Column(db.Integer, db.ForeignKey('employees.id'))
 
-    employee = db.relationship('Employee', back_populates = 'onboarding')
+    employee = db.relationship('Employee', back_populates = 'onboarding', cascade = 'all, delete-orphan')
 
     def __repr__(self):
         return f"<Onboarding {self.id}, {self.orientation}, {self.forms_complete}>"
